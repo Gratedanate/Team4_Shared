@@ -1,0 +1,150 @@
+/* Import Glacial Indifference */
+@import url('https://fonts.cdnfonts.com/css/glacial-indifference');
+
+/* ===== Global Page Style ===== */
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f5f7f4;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+    color: #2c3e50;
+}
+
+/* ===== Navbar ===== */
+.custom-navbar {
+    background-color: #90a997 !important; /* lighter neutral green */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 12px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 18px 0; /* makes navbar taller */
+    position: relative;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+}
+
+/* brand small + subtle top-left */
+.brand-text {
+    font-size: 12px;
+    color: #f1f4f2 !important;
+    opacity: 0.7;
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+}
+
+/* nav links centered */
+.nav-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 15px; /* extra spacing under pills */
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+}
+
+/* nav link pills */
+.nav-links .nav-link {
+    color: #2c3e50 !important;
+    background-color: #dce5df;
+    margin: 0 8px;
+    padding: 14px 32px;  /* fatter pills */
+    border-radius: 30px;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none !important;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+}
+
+.nav-links .nav-link:hover {
+    background-color: #c9d8cf;
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+.nav-links .active {
+    background-color: #2c3e50 !important;
+    color: #fff !important;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.nav-links .active:hover {
+    color: #d1d1d1 !important;  /* light grey when hovering */
+    text-decoration: none !important;
+}
+
+/* ===== Page Content ===== */
+
+/* Home page specific: reduce gap under card */
+.home-page .card {
+    margin-bottom: 10px;  /* smaller gap only on home */
+}
+
+.page-content {
+    flex: 1; /* pushes footer down */
+    max-width: 1200px;
+    margin-top: 15px;
+    margin-bottom: 20px; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    width: 100%;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+}
+
+/* ===== Page Header (floating title + subtitle) ===== */
+.page-header {
+    text-align: center;
+    margin-top: -15px;
+    margin-bottom: 5px;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+}
+
+.page-title {
+    font-size: 50px;
+    font-weight: 700; /* bold */
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+}
+
+.page-subtitle {
+    font-size: 20px;
+    font-weight: 400; /* normal */
+    color: #7a8a80;  /* lighter grey-green */
+    margin-bottom: 40px;
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+}
+
+/* ===== Card ===== */
+.card {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    padding: 40px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+    font-weight: 400;
+}
+
+/* ===== Footer ===== */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #90a997;
+    color: white;
+    font-size: 14px;
+    border-radius: 0 0 12px 12px;
+    margin-top: auto; /* ensures it sticks to bottom */
+    font-family: 'Glacial Indifference', Arial, sans-serif;
+}

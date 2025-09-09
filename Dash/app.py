@@ -2,20 +2,43 @@ import dash
 from dash import Dash, dcc, html
 import dash_bootstrap_components as dbc
 
-##initialize the app
-app = Dash(__name__, use_pages=True, suppress_callback_exceptions=True, title = "Multi-Page-App")
-server = app.server ## for deployment
+app = Dash(
+    __name__,
+    use_pages=True,
+    suppress_callback_exceptions=True,
+    title="Team 4 Final Dashboard"
+)
+server = app.server  # for deployment
 
-app.layout = html.Div([
-    dbc.NavbarSimple(
-        children=[
-            dbc.NavLink("Home", href="/", active ="exact"),
-            dbc.NavLink("Page 1", href="/pageone", active ="exact"),
-            dbc.NavLink("Page 2", href="/pagetwo", active ="exact"),
-        ],
-    brand = "Multiple Page Census App"),
-    dash.page_container
-])
+app.layout = html.Div(
+    className="page-wrapper",
+    children=[
+        # Navbar
+        dbc.Navbar(
+            dbc.Container([
+                dbc.NavbarBrand("Team 4 Final Dashboard", className="brand-text"),
+
+                # Centered nav links
+                dbc.Nav(
+                    [
+                        dbc.NavLink("About", href="/", active="exact"),
+                        dbc.NavLink("Bank Closures Map", href="/pageone", active="exact"),
+                        dbc.NavLink("Trend Comparison", href="/pagetwo", active="exact"),
+                    ],
+                    className="nav-links"
+                ),
+            ], fluid=True),
+            className="custom-navbar",
+            dark=True
+        ),
+
+        # Page content container
+        html.Div(dash.page_container, className="page-content"),
+
+        # Footer
+        html.Footer("Zoe Zung | Brynn Vetrano | Nathan Brewer | Data from FDIC & Federal Reserve", className="footer")
+    ]
+)
 
 if __name__ == "__main__":
     app.run(debug=True)
