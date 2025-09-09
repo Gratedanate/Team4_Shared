@@ -2,6 +2,7 @@ from dash import html, dcc, callback, register_page, Output, Input
 import pandas as pd
 import plotly.express as px
 from pathlib import Path
+import us
 
 register_page(__name__, path="/pageone", name = "Page 1")
 
@@ -14,25 +15,25 @@ df['upd_ClosingDate'] = pd.to_datetime(df["Closing Date"], format="%d-%b-%y")
 df["year"] = df["upd_ClosingDate"].dt.year
 closures = df.groupby(["year", "State"]).size().reset_index(name="closures")
 
-
 layout = html.Div([
     html.H1("Bank Closure Data since 2007"),
     html.Div([
         html.Div([
             dcc.Slider(
                 id="slider",
-                min=(closures["year"].min()),
+                min=2007,
                 max=(closures["year"].max()),
-                value=(closures["year"].min()),
+                value=2007,
                 marks={str(y): str(y) for y in sorted(closures["year"].unique())},
                 step=None,
             ),
             dcc.Graph(id="map"),
-        ], style={"flex": "3", "padding": "10px", "height": "600px"}),
+        ], style={"flex": "2.5", "padding": "10px", "height": "600px", "border-radius": "20px", "overflow": "hidden"}),
         html.Div([
             dcc.Dropdown(
                 id="state-dropdown",
-                options=[{"label": n, "value": n} for n in sorted(closures["State"].unique())]
+                placeholder = "Search for a state to learn more.",
+                options=[{"label": us.states.lookup(n).name, "value": us.states.lookup(n).name} for n in sorted(closures["State"].unique())]
             ),
             html.Div(id="state-info", ),
         ], style={"flex": "1", "padding": "10px"}),
@@ -50,7 +51,6 @@ def unified_functions(selected_year, selected_state):
     d = closures[closures["year"] == selected_year]
     fig = px.choropleth(
         d, 
-        title = f"Bank Closures in the US - {selected_year}",
         labels = {"color": "Number of Closures"},
         locations = "State",
         locationmode = "USA-states",
@@ -60,7 +60,7 @@ def unified_functions(selected_year, selected_state):
     )
 
     if not selected_state:
-        info = "Select a state to learn more."
+        info = None
     else:    
         state_data = df[(df["State"] == selected_state) & (df["year"] == selected_year)]
         
@@ -76,7 +76,7 @@ def unified_functions(selected_year, selected_state):
                 ))
 
             info = html.Div([
-                html.H3(f"Bank Closures in {selected_state}, during {selected_year}:"),
+                html.H3(f"Bank Closures in {selected_state} during {selected_year}:"),
                 html.Ul(closed_banks)
             ])
 

@@ -101,6 +101,16 @@ body, html {
     font-family: 'Glacial Indifference', Arial, sans-serif;
 }
 
+.rc-slider-handle:focus {
+    outline: none;
+    border: 2px solid #90a997;
+    background-color: #90a997;
+}
+
+.rc-slider-track {
+    background-color: #90a997;
+}
+
 /* ===== Page Header (floating title + subtitle) ===== */
 .page-header {
     text-align: center;
