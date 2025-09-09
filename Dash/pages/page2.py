@@ -5,9 +5,6 @@ import plotly.express as px
 from pathlib import Path
 
 
-register_page(__name__, path="/pagetwo", name = "Page 2")
-from dash import html
-
 dash.register_page(__name__, path="/pagetwo", name = "Page 2")
 
 
@@ -35,6 +32,7 @@ avg_rates_by_year = rates.groupby("Year")[["10 Yr", "1 Mo"]].mean()
 avg_rates_by_year["Spread (10 Yr - 1 M)"] = avg_rates_by_year["10 Yr"] - avg_rates_by_year["1 Mo"]
 
 merged = pd.merge(failures_by_year, avg_rates_by_year, left_index=True, right_index=True).reset_index()
+merged = merged[merged["Year"] >= 2007]
 
 fig = px.bar(
     merged,
