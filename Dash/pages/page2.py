@@ -9,7 +9,6 @@ register_page(__name__, path="/pagetwo", name = "Page 2")
 DataPath_failures = Path(__file__).resolve().parent.parent / "data" / "banks.csv"
 DataPath_rates = Path(__file__).resolve().parent.parent / "data" / "yield-curve-rates-1990-2024.csv"
 
-
 failures = pd.read_csv(DataPath_failures)
 rates = pd.read_csv(DataPath_rates)
 
@@ -26,6 +25,7 @@ avg_rates_by_year["Spread (10 Yr - 1 M)"] = avg_rates_by_year["10 Yr"] - avg_rat
 
 merged = pd.merge(failures_by_year, avg_rates_by_year, left_index=True, right_index=True).reset_index()
 merged = merged[merged["Year"] >= 2005]
+merged["Interest Rate Spread"] = merged["Spread (10 Yr - 1 M)"].map(lambda x: f"{x:.2f}%")
 
 layout = html.Div([
     html.H2("Bank Failures vs. Treasury Yield Spread"),
@@ -45,7 +45,9 @@ layout = html.Div([
     dcc.Graph(id="bank-failure-graph"),
 
     html.P("Hover over the bars/line to see yearly details."),
-    html.Button("Why is the Yield Spread Important?", id="show-blurb-button", n_clicks=0),
+    html.Div(id="show-blurb-button-container", children=[
+        html.Button("Why is the Yield Spread Important?", id="show-blurb-button", n_clicks=0)
+    ]),
     html.Div(id="yield-spread-info", style={"marginTop": "20px"})
 ])
 
@@ -63,8 +65,11 @@ def update_graph(view_choice):
             x="Year",
             y="Bank Failures",
             labels={"Year": "Year", "Bank Failures": "Number of Bank Failures"},
-            title="Bank Failures by Year"
+            title="Bank Failures by Year",
+            hover_data={"Spread (10 Yr - 1 M)": False, "Interest Rate Spread": False, "Bank Failures": True, "Year": False},
+            color_discrete_sequence=["#90a997"]
         )
+
 
     elif view_choice == "spread":
         fig = px.line(
@@ -72,7 +77,9 @@ def update_graph(view_choice):
             x="Year",
             y="Spread (10 Yr - 1 M)",
             labels={"Year": "Year", "Spread (10 Yr - 1 M)": "Yield Spread (%)"},
-            title="Yield Spread (10 Yr - 1 Mo) by Year"
+            title="Yield Spread (10 Yr - 1 Mo) by Year",
+            hover_data={"Spread (10 Yr - 1 M)": False, "Interest Rate Spread": True, "Bank Failures": False, "Year": False},
+            color_discrete_sequence=["#2c3e50"]
         )
 
     else:  
@@ -82,18 +89,21 @@ def update_graph(view_choice):
             y="Bank Failures",
             labels={"Year": "Year", "Bank Failures": "Number of Bank Failures"},
             title="Bank Failures and Yield Spread (10 Yr - 1 Mo) by Year",
-            hover_data={"Spread (10 Yr - 1 M)": ':.2f', "Bank Failures": True}
+            hover_data={"Spread (10 Yr - 1 M)": False, "Interest Rate Spread": False, "Bank Failures": True, "Year": False},
+            color_discrete_sequence=["#90a997"]
         )
+
 
         fig.add_scatter(
             x=filtered_data["Year"],
-            y=filtered_data["Spread (10 Yr - 1 M)"],
+            y=filtered_data["Interest Rate Spread"].str.rstrip('%').astype(float),
             mode="lines",
-            name="Spread (10 Yr - 1 Mo)",
+            name="Spread (%)",
             yaxis="y2",
-            line=dict(color="orange", width=2),
-            hoverinfo="skip",
+            line=dict(color="#2c3e50", width=2),
+            showlegend=False
         )
+
 
         fig.update_layout(
             yaxis=dict(title="Bank Failures"),
@@ -102,7 +112,9 @@ def update_graph(view_choice):
                 overlaying="y",
                 side="right",
                 showgrid=False,
-            )
+            ),
+            plot_bgcolor="#f5f7f4",
+            paper_bgcolor="#ffffff"
         )
 
     fig.update_layout(
@@ -110,8 +122,11 @@ def update_graph(view_choice):
             title="Year",
             tickmode="linear",
             dtick=1,
-            tickangle=0
+            tickangle=0,
+            showgrid=False
         ),
+        plot_bgcolor="#f5f7f4",
+        paper_bgcolor="#ffffff",
         legend=dict(x=0.01, y=0.99),
         hovermode="x unified"
     )
@@ -142,3 +157,13 @@ def display_blurb(n_clicks, selected_view):
             )
     else:
         return "" 
+
+@callback(
+    Output("show-blurb-button-container", "style"),
+    Input("data-view-selector", "value")
+)
+
+def toggle_button_visibility(selected_view):
+    if selected_view == "failures":
+        return {"display": "none"}
+    return {"display": "block"}
