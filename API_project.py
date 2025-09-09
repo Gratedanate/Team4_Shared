@@ -47,11 +47,6 @@ plt.tight_layout() # Adjusts the plot to ensure that all elements fit with no ov
 plt.show() # Displays the plot
 
 
-changes = 2+3
-
-
 ### Takeaway: 
 ### The graph displays significant growth in NVIDIA's stock price over the past 2 years, with noticeable acceleration in February 2024 and May 2025, and a large dip in April 2025 due to the President’s tariff announcement that caused a macro market sell-off. 
 ### Additionally, the five-week rolling average smoothes out volatility, making it clear that despite any short-term dips, NVIDIA's stock price continues to rise consistently and uphold a sustained momentum in the market.
-
-Attempt = 1 + 1
