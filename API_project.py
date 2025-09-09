@@ -55,3 +55,4 @@ changes = 2+3
 ### Additionally, the five-week rolling average smoothes out volatility, making it clear that despite any short-term dips, NVIDIA's stock price continues to rise consistently and uphold a sustained momentum in the market.
 
 Attempt = 1 + 1
+X = 5

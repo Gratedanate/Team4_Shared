@@ -11,6 +11,7 @@ app.layout = html.Div([
         children=[
             dbc.NavLink("Home", href="/", active ="exact"),
             dbc.NavLink("Page 1", href="/pageone", active ="exact"),
+            dbc.NavLink("Page 2", href="/pagetwo", active ="exact"),
         ],
     brand = "Multiple Page Census App"),
     dash.page_container
