@@ -3,7 +3,7 @@ One page displays the states where each bank failed by year. The other page show
 The relationship between bank failures and macroeconomic conditions is often unclear or overlooked by the general public, as data on these topics exists but is rarely presented in an intuitive, interactive, or accessible way.
 We made this website with the goal of providing accessible, data-driven insights to how the banking industry and Federal Reserve policy overlap to help people better understand warning signs of financial instability or the impact of monetary policy decisions.
 
-The audience could be students and educators studying finance, economics, or public policy; researchers interest in historical financial tends, or the curious general public.
+The audience could be students and educators studying finance, economics, or public policy, researchers interested in historical financial trends, or the curious general public.
 
 This website provides an interactive, visual exploration of bank failures in the U.S. from 2007 to 2024, contextualized alongside interest rates.
 By making complex financial data more understandable, it helps users understand historical patterns in financial crises, understand how monetary policy correlates with banking instability, and engage with data through clear, dynamic visuals instead of static reports or dense tables.
