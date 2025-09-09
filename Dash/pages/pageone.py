@@ -17,15 +17,27 @@ closures = df.groupby(["year", "State"]).size().reset_index(name="closures")
 
 layout = html.Div([
     html.H1("Bank Closure Data since 2000"),
-    dcc.Slider(
-        id="slider",
-        min=(closures["year"].min()),
-        max=(closures["year"].max()),
-        value=(closures["year"].min()),
-        marks={str(y): str(y) for y in sorted(closures["year"].unique())},
-        step=None,
-    ),
-    dcc.Graph(id="map"),
+    html.Div([
+        html.Div([
+            dcc.Slider(
+                id="slider",
+                min=(closures["year"].min()),
+                max=(closures["year"].max()),
+                value=(closures["year"].min()),
+                marks={str(y): str(y) for y in sorted(closures["year"].unique())},
+                step=None,
+            ),
+            dcc.Graph(id="map"),
+        ], style={"flex": "1", "padding": "10px"}),
+        html.Div([
+            dcc.Dropdown(
+                id="state-dropdown",
+                options=[{"label": n, "value": n} for n in sorted(closures["State"].unique())]
+            ),
+            html.Div(id="state-info", style={"padding": "10px"
+            }),
+        ], style={"flex": "1", "padding": "10px"}),
+    ], style={"display": "flex", "flex-direction": "row"}),
 ])
 
 @callback(
@@ -47,3 +59,30 @@ def bank_map(selected_year):
     )
 
     return fig
+
+@callback(
+    Output("state-info", "children"),
+    [Input("state-dropdown", "value"), Input("slider", "value")]
+)
+
+def state_info(selected_state, selected_year):
+    if not selected_state:
+        return "Select a state to learn more."
+
+    state_data = data[(data["State"] == selected_state) & (data["year"] == selected_year)]
+
+    if state_data.empty(): 
+        return f"No bank closures in {selected_state} for {selected_year}."
+
+    closed_banks = []
+    for index, row in state_data.iterrows():
+        closed_banks.append(html.Li(
+            f"{row['Bank Name']}, "
+            f"- Closed {row['upd_ClosingDate'] :%B %d, %Y}, "
+            f"- Acquiring Institution: {row['Acquiring Institution']}"
+        ))
+
+    return html.Div([
+        html.H3(f"Bank Closures in {selected_state}, during {selected_year}:"),
+        html.Ul(closed_banks)
+    ])
