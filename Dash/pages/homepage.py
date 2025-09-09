@@ -1,7 +1,7 @@
 import dash
 from dash import html
 
-dash.register_page(__name__, path="/")
+dash.register_page(__name__, path="/", name="Home")
 
 layout = html.Div(
     style={
@@ -52,7 +52,4 @@ layout = html.Div(
         ),
     ],
 )
-layout = html.Div([
-    html.H2("US Census Data"),
-    html.P("[Description of the Dashboard]")
-])  
+
