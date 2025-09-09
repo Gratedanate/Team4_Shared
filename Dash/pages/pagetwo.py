@@ -1,4 +1,5 @@
 import dash
+<<<<<<< HEAD
 from dash import html, dcc, Input, Output, callback, register_page
 import pandas as pd
 import plotly.express as px
@@ -6,10 +7,16 @@ from pathlib import Path
 
 
 register_page(__name__, path="/pagetwo", name = "Page 2")
+=======
+from dash import html
+
+dash.register_page(__name__, path="/pagetwo", name = "Page 2")
+>>>>>>> 54ea2c887f0ec04622dd9daca4e1d178c8c23916
 
 layout = html.Div([
     html.H2("Welcome to my Page 2"),
     html.P("This is a simple multipage Dash project example.")
+<<<<<<< HEAD
 ])
 
 DataPath_failures = Path(__file__).resolve().parent.parent / "data" / "banks.csv"
@@ -74,3 +81,6 @@ layout = html.Div([
     html.P("Hover over the bars/line to see yearly details.")
 ])
 
+=======
+])
+>>>>>>> 54ea2c887f0ec04622dd9daca4e1d178c8c23916
