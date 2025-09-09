@@ -24,7 +24,7 @@ avg_rates_by_year = rates.groupby("Year")[["10 Yr", "1 Mo"]].mean()
 avg_rates_by_year["Spread (10 Yr - 1 M)"] = avg_rates_by_year["10 Yr"] - avg_rates_by_year["1 Mo"]
 
 merged = pd.merge(failures_by_year, avg_rates_by_year, left_index=True, right_index=True).reset_index()
-merged = merged[merged["Year"] >= 2001]
+merged = merged[merged["Year"] >= 2007]
 merged["Interest Rate Spread"] = merged["Spread (10 Yr - 1 M)"].map(lambda x: f"{x:.2f}%")
 
 layout = html.Div([
@@ -58,7 +58,7 @@ layout = html.Div([
 )
 
 def update_graph(view_choice):
-    filtered_data = merged[merged["Year"] >= 2001]
+    filtered_data = merged[merged["Year"] >= 2007]
     if view_choice == "failures":
         fig = px.bar(
             filtered_data,
