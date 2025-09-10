@@ -9,6 +9,7 @@ This website provides an interactive, visual exploration of bank failures in the
 By making complex financial data more understandable, it helps users understand historical patterns in financial crises, understand how monetary policy correlates with banking instability, and engage with data through clear, dynamic visuals instead of static reports or dense tables.
 
 **How to Run**
+
 Render Deployment Notes:
 1. Create a requirements.txt file. Ensure every library used across all files is included in the file.
 2. Add requirements.txt into Dash folder.
