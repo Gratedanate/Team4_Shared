@@ -1,3 +1,13 @@
+# AI Usage Appendix:
+# Tools Used: CoPilot and ChatGPT
+# CoPilot was used for auto filling parts of the code. 
+# ChatGPT was used for clarifying code snippets (what the lines meant/did) and changing some of the format of the graphs (for example, editing the hover box on the bank failures graph). Additionally, our team utilized ChatGPT for lists of arguments related to specific functions, information on packages that could simplify coding workflow, and for questions regarding design elements. However, our most significant usage of ChatGPT was for help with the GitHub Repository and understanding how to push and pull code from it.
+# What was verified/ edited:
+# •	Clarification and layout changes on some of the functions
+# •	Verifying the dropdown option of the graphs on page two and editing the button
+# •	Design.css file suggestions
+
+
 import dash
 from dash import Dash, dcc, html
 import dash_bootstrap_components as dbc
