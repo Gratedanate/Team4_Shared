@@ -49,8 +49,8 @@ body, html {
     font-family: 'Glacial Indifference', Arial, sans-serif;
 }
 
-/* nav link pills */
-.nav-links .nav-link {
+/* ===== Pill Buttons (used for nav links + standalone buttons) ===== */
+.nav-link, .pill-button {
     color: #2c3e50 !important;
     background-color: #dce5df;
     margin: 0 8px;
@@ -62,14 +62,18 @@ body, html {
     font-size: 16px;
     text-align: center;
     font-family: 'Glacial Indifference', Arial, sans-serif;
+    border: none; /* removes border for html.Button */
+    cursor: pointer;
 }
 
-.nav-links .nav-link:hover {
+/* Hover state */
+.nav-link:hover, .pill-button:hover {
     background-color: #c9d8cf;
     color: #000 !important;
     text-decoration: none !important;
 }
 
+/* Active (current page nav pill) */
 .nav-links .active {
     background-color: #2c3e50 !important;
     color: #fff !important;
@@ -77,8 +81,9 @@ body, html {
     box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
+/* Active + Hover (lighter grey text when hovering over the active pill) */
 .nav-links .active:hover {
-    color: #d1d1d1 !important;  /* light grey when hovering */
+    color: #d1d1d1 !important;
     text-decoration: none !important;
 }
 
@@ -101,14 +106,23 @@ body, html {
     font-family: 'Glacial Indifference', Arial, sans-serif;
 }
 
-.rc-slider-handle:focus {
-    outline: none;
-    border: 2px solid #90a997;
-    background-color: #90a997;
+/* Custom slider styles */
+.custom-slider .rc-slider-handle {
+    border: solid 2px #90a997 !important; /* outer ring */
+    background-color: #90a997 !important; /* inner dot */
 }
 
-.rc-slider-track {
-    background-color: #90a997;
+.custom-slider .rc-slider-dot {
+    border: solid 2px #90a997 !important;
+    background-color: #90a997 !important;
+}
+
+.custom-slider .rc-slider-rail {
+    background-color: #dce5df !important; /* base track (muted grey-green) */
+}
+
+.custom-slider .rc-slider-track {
+    background-color: #90a997 !important; /* filled portion */
 }
 
 /* ===== Page Header (floating title + subtitle) ===== */

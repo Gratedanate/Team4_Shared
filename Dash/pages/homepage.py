@@ -22,7 +22,7 @@ layout = html.Div(
                 html.P(
                     """
                     This dashboard examines the relationship between failed US banks over recent years 
-                    and changes in US interest rates. By combining historical data from data.gov on bank
+                    and changes in US interest rates. By combining historical data from FDIC on bank
                     closures with Federal Reserve yield curve rates, we aim to uncover patterns that
                     highlight how monetary policy may influence financial stability.
                     """
