@@ -9,9 +9,25 @@ This website provides an interactive, visual exploration of bank failures in the
 By making complex financial data more understandable, it helps users understand historical patterns in financial crises, understand how monetary policy correlates with banking instability, and engage with data through clear, dynamic visuals instead of static reports or dense tables.
 
 **How to Run**
+Render Deployment Notes:
+1. Create a requirements.txt file. Ensure every library used across all files is included in the file.
+2. Add requirements.txt into Dash folder.
+3. In Render, create a new Web Service.
+4. Link Team4_Shared repository.
+5. Add Root Directory: Dash.
+6. Select Virginia (US East) Region.
+7. Create Start Command: gunicorn app:server.
+8. Added server = app.server line to app.py file.
+9. Select Create Web Service.
+10. Website can be accessed at this link: https://team4dashapp.onrender.com
+
 To Run Locally: 
 1. git clone https://github.com/Gratedanate/Team4_Shared.git
-2. 
+2. cd Team4_Shared/Dash
+3. pip install -r requirements.txt
+4. Run app.py file in terminal
+5. Follow the link to the Dash: http://127.0.0.1:8050/
+
 
 **Data Description:**
 Bank Failures - 
