@@ -7,7 +7,6 @@
 # •	Verifying the dropdown option of the graphs on page two and editing the button
 # •	Design.css file suggestions
 
-
 import dash
 from dash import Dash, dcc, html
 import dash_bootstrap_components as dbc
@@ -18,7 +17,7 @@ app = Dash(
     suppress_callback_exceptions=True,
     title="Team 4 Final Dashboard"
 )
-server = app.server  # for deployment
+server = app.server 
 
 app.layout = html.Div(
     className="page-wrapper",
