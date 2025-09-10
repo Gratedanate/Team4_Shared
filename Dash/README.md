@@ -5,7 +5,7 @@ We made this website with the goal of providing accessible, data-driven insights
 
 The audience could be students and educators studying finance, economics, or public policy, researchers interested in historical financial trends, or the curious general public.
 
-This website provides an interactive, visual exploration of bank failures in the U.S. from 2007 to 2024, contextualized alongside interest rates.
+This website provides an interactive, visual exploration of bank failures in the U.S. from 2007 to 2024, with one page of them contextualized alongside the historical interest rate spread.
 By making complex financial data more understandable, it helps users understand historical patterns in financial crises, understand how monetary policy correlates with banking instability, and engage with data through clear, dynamic visuals instead of static reports or dense tables.
 
 **How to Run**
