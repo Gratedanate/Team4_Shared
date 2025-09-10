@@ -8,6 +8,11 @@ The audience could be students and educators studying finance, economics, or pub
 This website provides an interactive, visual exploration of bank failures in the U.S. from 2007 to 2024, contextualized alongside interest rates.
 By making complex financial data more understandable, it helps users understand historical patterns in financial crises, understand how monetary policy correlates with banking instability, and engage with data through clear, dynamic visuals instead of static reports or dense tables.
 
+**How to Run**
+To Run Locally: 
+1. git clone https://github.com/Gratedanate/Team4_Shared.git
+2. 
+
 **Data Description:**
 Bank Failures - 
 Data obtained from Data.gov sourced from the Federal Deposit Insurance Corporation (FDIC). The dataset, "banklist.csv" contains information on bank failures including institution names, locations, dates of closure, and who acquired them.
